@@ -1,5 +1,5 @@
 var app = require('express').Router();
-const Blog = require("../model/blog");
+const Blog = require("../../model/blog");
 
 //add new blog
 app.post(('/newBlog'), (req, res) => {

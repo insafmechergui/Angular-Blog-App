@@ -1,5 +1,5 @@
 var app = require('express').Router();
-const Category = require("../model/category");
+const Category = require("../../model/category");
 
 //add new category
 app.post(('/newCategory'), (req, res) => {
