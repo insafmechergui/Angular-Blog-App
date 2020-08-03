@@ -22,17 +22,19 @@ app.post(('/register'), (req, res) => {
                     newUser.password = hash
                     User.create(newUser)
                         .then(user => {
-                            res.json({
-                                status: 'Welcome ' + user.name + ', you are registred successfully!'
+                            res.sendStatus(201).json({
+                                message: 'Welcome ' + user.name + ', you are registered successfully!'
                             })
                         })
                         .catch(err => {
-                            res.send('error: ' + err)
+                            sendStatus(201).json({
+                                message: 'Welcome ' + user.name + ', you are registered successfully!'
+                            })
                         })
                 })
             }
             else {
-                res.json({ error: 'User already exists' })
+                res.sendStatus(200).json({ message: 'User already exists' })
             }
         })
         .catch(err => {
@@ -53,7 +55,7 @@ app.post('/login', (req, res) => {
                         email: user.email
                     }
                     let token = jwt.sign(payload, process.env.SECRET_KEY)
-                    res.send("User login successfuly " + token)
+                    res.send("User login successfuly, token : " + token)
                 }
                 else {
                     res.json({ error: "User does not exist" })

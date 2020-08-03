@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    // console.log(this.registerUserData)
+    console.log(this.registerUserData)
     this._auth.registerUser(this.registerUserData)
       .subscribe(
         res => console.log(res),
