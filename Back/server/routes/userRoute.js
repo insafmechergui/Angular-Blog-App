@@ -27,14 +27,12 @@ app.post(('/register'), (req, res) => {
                             })
                         })
                         .catch(err => {
-                            sendStatus(201).json({
-                                message: 'Welcome ' + user.name + ', you are registered successfully!'
-                            })
+                            res.send('error: ' + err)
                         })
                 })
             }
             else {
-                res.sendStatus(200).json({ message: 'User already exists' })
+                res.json({ message: 'User already exists' })
             }
         })
         .catch(err => {
@@ -55,6 +53,7 @@ app.post('/login', (req, res) => {
                         email: user.email
                     }
                     let token = jwt.sign(payload, process.env.SECRET_KEY)
+                    console.log(req.body)
                     res.send("User login successfuly, token : " + token)
                 }
                 else {
