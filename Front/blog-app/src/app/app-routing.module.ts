@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { DisplayBlogComponent } from './display-blog/display-blog.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'addBlog',
     component: AddBlogComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'displayBlog',

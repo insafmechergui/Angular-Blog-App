@@ -1,5 +1,6 @@
 var app = require('express').Router();
 const Blog = require("../../model/blog");
+const { options } = require('./userRoute');
 
 //add new blog
 app.post(('/newBlog'), (req, res) => {
@@ -17,7 +18,11 @@ app.get(('/blog/:id'), (req, res) => {
 //display all blogs
 app.get(('/blog'), (req, res) => {
     Blog.find()
-        .then((blog) => res.json(blog))
+        .sort({ date: -1 })
+        .then((blog) => {
+            res.json(blog)
+        })
+
         .catch(err => res.status(400).json('Error: ' + err))
 })
 //display all blogs by category
