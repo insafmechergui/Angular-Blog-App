@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BlogsComponent } from './blogs/blogs.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AddBlogComponent } from './add-blog/add-blog.component';
+import { DisplayBlogComponent } from './display-blog/display-blog.component';
 
 const routes: Routes = [
   {
@@ -11,8 +12,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'blogs',
-    component: BlogsComponent
+    path: 'addBlog',
+    component: AddBlogComponent
+  },
+  {
+    path: 'displayBlog',
+    component: DisplayBlogComponent
   },
   {
     path: 'register',

@@ -40,34 +40,34 @@ app.post(('/register'), (req, res) => {
         })
 });
 //(signin)
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
     User.findOne({
-        email: req.body.email
+        email: req.body.email,
     })
-        .then(user => {
+        .then((user) => {
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
                     const payload = {
                         _id: user._id,
                         name: user.name,
-                        email: user.email
-                    }
-                    let token = jwt.sign(payload, process.env.SECRET_KEY)
-                    console.log(req.body)
-                    res.send("User login successfuly, token : " + token)
+                        email: user.email,
+                    };
+                    let token = jwt.sign(payload, process.env.SECRET_KEY);
+                    res.json({
+                        auth: true,
+                        token,
+                    });
+                } else {
+                    res.json({ error: "User does not exist" });
                 }
-                else {
-                    res.json({ error: "User does not exist" })
-                }
-            }
-            else {
-                res.json({ error: "User does not exist" })
+            } else {
+                res.json({ error: "User does not exist" });
             }
         })
-        .catch(err => {
-            res.send('error: ' + err)
-        })
-})
+        .catch((err) => {
+            res.send("error: " + err);
+        });
+});
 //display all users
 app.get(('/allUsers'), (req, res) => {
     User.find()

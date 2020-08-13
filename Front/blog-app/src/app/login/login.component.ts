@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,33 +10,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginUserData = {
-    email: "",
-    password: ""
+    email: [""],
+    password: [""]
   }
+  currentUser: Object = {}
   constructor(
     private _auth: AuthService,
     private router: Router
-  ) {
-    if (this._auth) {
-      // this.router.navigate(['/'])
-      // console.log(this._auth)
-    }
-  }
+  ) { }
 
   ngOnInit(): void {
   }
 
   loginUser() {
-    // console.log(this.loginUserData)
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         res => {
-          console.log(res)
-          // this.router.navigate(['./'])
-        },
-        err => console.log(err)
+          localStorage.setItem('access_token', res.token)
+          this.currentUser = res.token
+          this.router.navigate(['./']);
+        }
       )
-
   }
 
 }
