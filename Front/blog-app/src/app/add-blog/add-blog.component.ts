@@ -19,8 +19,8 @@ export class AddBlogComponent implements OnInit {
   blogs = []
   ngOnInit(): void { }
 
-  registerBlog(title, text) {
-    let blog = { 'title': title.value, 'text': text.value }
+  registerBlog(title, text, picture) {
+    let blog = { 'title': title.value, 'text': text.value, 'picture': picture.value }
     this._blog.registerBlog(blog)
       .subscribe(
         res => console.log(res),
@@ -28,6 +28,7 @@ export class AddBlogComponent implements OnInit {
       )
 
     title.value = "",
-      text.value = ""
+      text.value = "",
+      picture.value = ""
   }
 }

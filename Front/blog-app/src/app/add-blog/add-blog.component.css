@@ -1,0 +1,8 @@
+.addBlog{
+    margin: 1%;
+    padding: 5%;
+}
+.addBlog .title{
+    display: block;
+    text-align: center;
+}

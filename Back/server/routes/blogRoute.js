@@ -34,6 +34,7 @@ app.post(('/updateBlog/:id'), (req, res) => {
         .then((blog) => {
             blog.title = req.body.title;
             blog.text = req.body.text;
+            blog.picture = req.body.picture;
             blog.category = req.body.category;
             blog.save()
                 .then(() => res.json('Blog updated!'))

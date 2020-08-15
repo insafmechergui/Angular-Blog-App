@@ -1,5 +1,5 @@
-<form class="form" b>
-    <div class="form-group">
+<form class="form bg-light addBlog">
+    <div class="form-group col-md-4 ">
         <label>Title</label>
         <input type="text" class="form-control" name="title" #title>
     </div>
@@ -7,9 +7,13 @@
         <label>Text</label>
         <textarea class="form-control" name="text" rows="3" #text></textarea>
     </div>
-    <!-- <input type="file" ng2FileSelect [uploader]="uploader" multiple> -->
+    <div class="form-group">
+        <label>Picture</label>
+        <input type="text" class="form-control" name="picture" #picture>
+        <!-- <input type="file" ng2FileSelect multiple name="picture" #picture> -->
+    </div>
     <!-- [(ngModel)]="registerBlogData.title"
     [(ngModel)]="registerBlogData.text"  -->
 
-    <button (click)="registerBlog(title, text)" type="submit" class="btn btn-primary">Add Blog</button>
+    <button (click)="registerBlog(title, text, picture)" type="submit" class="btn btn-primary">Add Blog</button>
 </form>

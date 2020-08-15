@@ -13,8 +13,10 @@ const blogSchema = new Schema({
     //     ref: 'User'
     // }],
     // date: Date
-    // timestamps: { createdAt: 'created_at' }
-    // timestamps: true
-
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    picture: String
 });
 module.exports = mongoose.model("Blog", blogSchema);
